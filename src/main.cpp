@@ -29,10 +29,15 @@ int main(int argc, char *argv[])
   
   //CODE
     const GLfloat positions[] = {
-	  0.0f, 0.5f, 0.0f,
-	  -0.5f, -0.5f, 0.0f,
-	  0.0f, -0.5f, 0.0f
+		0.0f, 0.5f, 0.0f,
+		-0.5f, -0.5f, 0.0f,
+		0.5f, -0.5f, 0.0f
   };
+	const GLfloat positions2[] = {
+		0.0f, -0.5f, 1.0f,
+		-0.5f, 0.5f, 1.0f,
+		0.5f, 0.5f, 1.0f
+	};
 
 	GLuint positionsVboId = 0;
 
@@ -57,9 +62,60 @@ int main(int argc, char *argv[])
 	glEnableVertexAttribArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
+	
+	const GLchar *vertexShaderSrc =
+		"attribute vec3 in_Position;             " \
+		"                                        " \
+		"void main()                             " \
+		"{                                       " \
+		"  gl_Position = vec4(in_Position, 1.0); " \
+		"}                                       ";
 
-	// note -> start of page 5 3dgp-lab1_2-triangle
+	GLuint vertexShaderId = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(vertexShaderId, 1, &vertexShaderSrc, NULL);
+	glCompileShader(vertexShaderId);
+	GLint success = 0;
+	glGetShaderiv(vertexShaderId, GL_COMPILE_STATUS, &success);
+	if (!success)
+	{
+		throw std::exception();
+	}
 
+	const GLchar *fragmentShaderSrc =
+		"void main()                        " \
+		"{                                  " \
+		"  gl_FragColor = vec4(0, 0, 1, 1); " \
+		"}                                  ";
+
+	GLuint fragmentShaderId = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(fragmentShaderId, 1, &fragmentShaderSrc, NULL);
+	glCompileShader(fragmentShaderId);
+	glGetShaderiv(fragmentShaderId, GL_COMPILE_STATUS, &success);
+	if (!success)
+	{
+		throw std::exception();
+	}
+
+	GLuint programId = glCreateProgram();
+	glAttachShader(programId, vertexShaderId);
+	glAttachShader(programId, fragmentShaderId);
+	
+	glBindAttribLocation(programId, 0, "in_Position");
+	
+	glLinkProgram(programId);
+	glGetProgramiv(programId, GL_LINK_STATUS, &success);
+	if (!success)
+	{
+		throw std::exception();
+	}
+
+	glDetachShader(programId, vertexShaderId);
+	glDeleteShader(vertexShaderId);
+	glDetachShader(programId, fragmentShaderId);
+	glDeleteShader(fragmentShaderId);
+
+
+	//while loop
   while(!quit)
   {
     SDL_Event event = {0};
@@ -68,6 +124,14 @@ int main(int argc, char *argv[])
     {
 		glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
+		glUseProgram(programId);
+		glBindVertexArray(vaoId);
+
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+
+		glBindVertexArray(0);
+		glUseProgram(0);
+
 		SDL_GL_SwapWindow(window);
 
 
