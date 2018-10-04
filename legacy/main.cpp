@@ -1,6 +1,12 @@
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
+#include <glm/glm.hpp>
+
 #include <exception>
+
+#include "VertexBuffer.h"
+#include "VertexArray.h"
+#include "ShaderProgram.h"
 
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
@@ -28,47 +34,52 @@ int main(int argc, char *argv[])
   bool quit = false;
   
   //CODE
-    const GLfloat positions[] = {
-		0.0f, 0.5f, 0.0f,
-		-0.5f, -0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f
-  };
-	const GLfloat positions2[] = {
-		0.0f, -0.5f, 1.0f,
-		-0.5f, 0.5f, 1.0f,
-		0.5f, 0.5f, 1.0f
-	};
 
-	GLuint positionsVboId = 0;
+  VertexBuffer* positions = new VertexBuffer();
+  positions->add(glm::vec3(0.0f, 0.5f, 0.0f));
+  positions->add(glm::vec3(-0.5f, -0.5f, 0.0f));
+  positions->add(glm::vec3(0.5f, -0.5f, 0.0f));
 
-	glGenBuffers(1, &positionsVboId);
-	if (!positionsVboId)
-	{
-		throw std::exception();
-	}
-	glBindBuffer(GL_ARRAY_BUFFER, positionsVboId);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(positions), positions, GL_STATIC_DRAW);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+  VertexBuffer* colors = new VertexBuffer();
+  positions->add(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+  positions->add(glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
+  positions->add(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
 
-	GLuint vaoId = 0;
-	glGenVertexArrays(1, &vaoId);
-	if (!vaoId)
-	{
-		throw std::exception();
-	}
-	glBindVertexArray(vaoId);
-	glBindBuffer(GL_ARRAY_BUFFER, positionsVboId);
+
+	glBindVertex(vaoId);
+	// bind the position VBO, assighnhsvaujhdvsakjhvdujsahvd
+	glBindBuffer(GL_ARRAY_BUFFER, positions->GetId());
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void *)0);
 	glEnableVertexAttribArray(0);
+	//comment goes here
+	glBindBuffer(GL_ARRAY_BUFFER, colors->GetId());
+	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 4 * sizof(GLfloat), (void *)0);
+	glEnableVertexAttribArray(1);
+
+	//another comment
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
-	
+
+	Gluint vertexShaderId = glCreateShader(Gl_VERTEX_SHADER);
+	glShaderSource(vertexShaderId, 1, &vertexShaderSrc, NULL);
+	glCompileShader(vertexShaderId);
+	GLuint success = 0;
+	glGetShaderiv(vertexShaderId, GL_COMPILE_STATUS, &success);
+
+
+
+
+
 	const GLchar *vertexShaderSrc =
 		"attribute vec3 in_Position;             " \
+		"attribute vec4 in_Color;                " \
+		"										 " \
+		"varying vec4 ex_Color                   " \
 		"                                        " \
 		"void main()                             " \
 		"{                                       " \
 		"  gl_Position = vec4(in_Position, 1.0); " \
+		"  ex_Color = inColor;                   " \
 		"}                                       ";
 
 	GLuint vertexShaderId = glCreateShader(GL_VERTEX_SHADER);
@@ -82,9 +93,10 @@ int main(int argc, char *argv[])
 	}
 
 	const GLchar *fragmentShaderSrc =
+		"varying vec4 ex_Color;				" \
 		"void main()                        " \
 		"{                                  " \
-		"  gl_FragColor = vec4(0, 0, 1, 1); " \
+		"  gl_FragColor = ex_Color;			" \
 		"}                                  ";
 
 	GLuint fragmentShaderId = glCreateShader(GL_FRAGMENT_SHADER);
@@ -108,6 +120,22 @@ int main(int argc, char *argv[])
 	{
 		throw std::exception();
 	}
+	//getting the id for the shader
+	GLint colorUniformId = glGetUniformLocation(programId, "in_Color");
+
+	if (colorUniformId == -1)
+	{
+		throw std::exception();
+	}
+
+	glUseProgram(programId);
+	glUniform4f(colorUniformId, 0, 1, 0, 1);
+	glUseProgram(0);
+
+
+
+
+
 
 	glDetachShader(programId, vertexShaderId);
 	glDeleteShader(vertexShaderId);
