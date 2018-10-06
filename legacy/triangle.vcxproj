@@ -145,6 +145,10 @@ copy ..\contrib\msvc-windows-x86\glew\bin\*.dll $(OutputPath)</Command>
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="VertexBuffer.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="simple.frag" />
+    <None Include="simple.vert" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

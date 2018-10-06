@@ -1,11 +1,12 @@
 #include <glm/glm.hpp>
+#include <GL/glew.h>
 #include <vector>
 
 class VertexBuffer
 {
 private:
 	GLuint id;
-	int componants;
+	int components;
 	std::vector <GLfloat> data;
 	bool dirty;
 
@@ -15,7 +16,7 @@ public:
 	void add(glm::vec3 value);
 	void add(glm::vec4 value);
 	
-	int GetComponants();
+	int GetComponents();
 	int GetDataSize();
 	GLuint GetId();
 };

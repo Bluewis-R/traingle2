@@ -31,9 +31,7 @@ int main(int argc, char *argv[])
 	  throw std::exception();
   }
 
-  bool quit = false;
-  
-  //CODE
+  // OPENGL code
 
   VertexBuffer* positions = new VertexBuffer();
   positions->add(glm::vec3(0.0f, 0.5f, 0.0f));
@@ -45,104 +43,15 @@ int main(int argc, char *argv[])
   positions->add(glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
   positions->add(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
 
+  VertexArray *shape = new VertexArray();
+  shape->SetBuffer("in_Position", positions);
+  shape->SetBuffer("in_Color", colors);
 
-	glBindVertex(vaoId);
-	// bind the position VBO, assighnhsvaujhdvsakjhvdujsahvd
-	glBindBuffer(GL_ARRAY_BUFFER, positions->GetId());
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void *)0);
-	glEnableVertexAttribArray(0);
-	//comment goes here
-	glBindBuffer(GL_ARRAY_BUFFER, colors->GetId());
-	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 4 * sizof(GLfloat), (void *)0);
-	glEnableVertexAttribArray(1);
-
-	//another comment
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindVertexArray(0);
-
-	Gluint vertexShaderId = glCreateShader(Gl_VERTEX_SHADER);
-	glShaderSource(vertexShaderId, 1, &vertexShaderSrc, NULL);
-	glCompileShader(vertexShaderId);
-	GLuint success = 0;
-	glGetShaderiv(vertexShaderId, GL_COMPILE_STATUS, &success);
+  ShaderProgram *shaderProgram = new ShaderProgram("../shader/simple.vert", "..shaders/simple.frag");
 
 
 
-
-
-	const GLchar *vertexShaderSrc =
-		"attribute vec3 in_Position;             " \
-		"attribute vec4 in_Color;                " \
-		"										 " \
-		"varying vec4 ex_Color                   " \
-		"                                        " \
-		"void main()                             " \
-		"{                                       " \
-		"  gl_Position = vec4(in_Position, 1.0); " \
-		"  ex_Color = inColor;                   " \
-		"}                                       ";
-
-	GLuint vertexShaderId = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vertexShaderId, 1, &vertexShaderSrc, NULL);
-	glCompileShader(vertexShaderId);
-	GLint success = 0;
-	glGetShaderiv(vertexShaderId, GL_COMPILE_STATUS, &success);
-	if (!success)
-	{
-		throw std::exception();
-	}
-
-	const GLchar *fragmentShaderSrc =
-		"varying vec4 ex_Color;				" \
-		"void main()                        " \
-		"{                                  " \
-		"  gl_FragColor = ex_Color;			" \
-		"}                                  ";
-
-	GLuint fragmentShaderId = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragmentShaderId, 1, &fragmentShaderSrc, NULL);
-	glCompileShader(fragmentShaderId);
-	glGetShaderiv(fragmentShaderId, GL_COMPILE_STATUS, &success);
-	if (!success)
-	{
-		throw std::exception();
-	}
-
-	GLuint programId = glCreateProgram();
-	glAttachShader(programId, vertexShaderId);
-	glAttachShader(programId, fragmentShaderId);
-	
-	glBindAttribLocation(programId, 0, "in_Position");
-	
-	glLinkProgram(programId);
-	glGetProgramiv(programId, GL_LINK_STATUS, &success);
-	if (!success)
-	{
-		throw std::exception();
-	}
-	//getting the id for the shader
-	GLint colorUniformId = glGetUniformLocation(programId, "in_Color");
-
-	if (colorUniformId == -1)
-	{
-		throw std::exception();
-	}
-
-	glUseProgram(programId);
-	glUniform4f(colorUniformId, 0, 1, 0, 1);
-	glUseProgram(0);
-
-
-
-
-
-
-	glDetachShader(programId, vertexShaderId);
-	glDeleteShader(vertexShaderId);
-	glDetachShader(programId, fragmentShaderId);
-	glDeleteShader(fragmentShaderId);
-
-
+  bool quit = false;
 	//while loop
   while(!quit)
   {
@@ -150,30 +59,18 @@ int main(int argc, char *argv[])
 
     while(SDL_PollEvent(&event))
     {
-		glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
-		glUseProgram(programId);
-		glBindVertexArray(vaoId);
-
-		glDrawArrays(GL_TRIANGLES, 0, 3);
-
-		glBindVertexArray(0);
-		glUseProgram(0);
-
-		SDL_GL_SwapWindow(window);
-
-
-
-
-
-
-
-
-
-      if(event.type == SDL_QUIT)
+      if (event.type == SDL_QUIT)
       {
         quit = true;
       }
+
+
+		glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+    
+    shaderProgram->draw(shape);
+    
+		SDL_GL_SwapWindow(window);
     }
   }
 
