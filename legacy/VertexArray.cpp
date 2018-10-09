@@ -25,7 +25,7 @@ void VertexArray::SetBuffer(std::string attribute, VertexBuffer * buffer)
   }
   else if (attribute == "in_Color")
   {
-    buffers.at(1);
+    buffers.at(1) = buffer;
   }
   else
   {
@@ -41,6 +41,7 @@ int VertexArray::GetVertexCount()
   {
     throw std::exception();
   }
+
 	return buffers.at(0)->GetDataSize() / buffers.at(0)->GetComponents();
 }
 
@@ -53,7 +54,7 @@ GLuint VertexArray::GetId()
     {
       if (buffers.at(i))
       {
-        glBindBuffer(GL_ARRAY_BUFFER, buffers.at(0)->GetId());
+        glBindBuffer(GL_ARRAY_BUFFER, buffers.at(i)->GetId());
         glVertexAttribPointer(i,
           buffers.at(i)->GetComponents(), GL_FLOAT, GL_FALSE,
           buffers.at(i)->GetComponents() * sizeof(GLfloat), (void *)0);

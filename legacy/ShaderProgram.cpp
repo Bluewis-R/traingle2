@@ -1,9 +1,10 @@
 #include "ShaderProgram.h"
+#include "VertexArray.h"
 
 ShaderProgram::ShaderProgram()
 {
   //  getting the vertex data
-  std::ifstream file("..shader/simple.vert");
+  std::ifstream file("../shader/simple.vert");
   if (!file.is_open())
   {
     throw std::exception();
@@ -112,7 +113,7 @@ ShaderProgram::ShaderProgram(std::string vert, std::string frag)
     {
       std::string line;
       std::getline(file, line);
-      vertShader += line + "\n";
+      fragShader += line + "\n";
     }
     file.close();
 

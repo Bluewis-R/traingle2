@@ -2,8 +2,9 @@
 
 VertexBuffer::VertexBuffer()
 {
-  components = 0;
-	dirty = false; glGenBuffers(1, &id);
+	components = 0;
+	dirty = false; 
+	glGenBuffers(1, &id);
 
 	if (!id)
 	{
@@ -22,7 +23,7 @@ void VertexBuffer::add(glm::vec3 value)
 	data.push_back(value.x);
 	data.push_back(value.y);
 	data.push_back(value.z);
-  components = 3;
+	components = 3;
 	dirty = true;
 }
 
@@ -37,7 +38,7 @@ void VertexBuffer::add(glm::vec4 value)
 	data.push_back(value.y);
 	data.push_back(value.z);
 	data.push_back(value.w);
-  components = 4;
+	components = 4;
 	dirty = true;
 }
 
