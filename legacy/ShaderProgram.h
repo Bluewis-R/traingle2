@@ -1,5 +1,9 @@
 #include <GL/glew.h>
 #include <glm/glm.hpp>
+#include <glm/ext.hpp>
+#include <stb_image/stb_image.h>
+
+
 #include <fstream>
 #include <string>
 
@@ -20,6 +24,7 @@ public:
 	
 	void SetUniform(std::string uniform, glm::vec4 value);
 	void SetUniform(std::string uniform, float value);
+	void SetUniform(std::string uniform, glm::mat4);
 	
 	GLuint getId();
 

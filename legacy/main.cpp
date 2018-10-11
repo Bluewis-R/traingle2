@@ -2,6 +2,7 @@
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
+#include <stb_image/stb_image.h>
 
 #include <exception>
 
@@ -39,15 +40,15 @@ int main(int argc, char *argv[])
   positions->add(glm::vec3(-0.5f, 0.5f, 0.0f));
   positions->add(glm::vec3(-0.5f, -0.5f, 0.0f));
   positions->add(glm::vec3(0.5f, -0.5f, 0.0f));
-
-  VertexBuffer* colors = new VertexBuffer();
-  colors->add(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
-  colors->add(glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
-  colors->add(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
+  
+  VertexBuffer* texCoords = new VertexBuffer();
+  texCoords->add(glm::vec2(0.5f, 0.0f));
+  texCoords->add(glm::vec2(0.0f, 1.0f));
+  texCoords->add(glm::vec2(1.0f, 1.0f));
 
   VertexArray *shape = new VertexArray();
   shape->SetBuffer("in_Position", positions);
-  shape->SetBuffer("in_Color", colors);
+  shape->SetBuffer("in_TexCoord", texCoords);
 
   ShaderProgram *shaderProgram = new ShaderProgram("../shaders/simple.vert", "../shaders/simple.frag");
 
@@ -71,18 +72,49 @@ int main(int argc, char *argv[])
 	glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
     
-	//Shader things
+	
+	int w = 0;
+	int h = 0;
+	int channels = 0;
 
-	shaderProgram->SetUniform("in_Projection", glm::ortho(0.0f, (float)WINDOW_WIDTH, 0.0f, (float)WINDOW_HEIGHT, 0.0f, 1.0f));
+	unsigned char *data = stbi_load("dice.png", &w, &h, &channels, 4);
+	if (!data)
+	{
+		throw std::exception();
+	}
+	
+	GLuint textureId = 0;
+	glGenTextures(1, &textureId);
+
+	if (!textureId)
+	{
+		throw std::exception();
+	}
+	glBindTexture(GL_TEXTURE_2D, textureId);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+	free(data);
+	glGenerateMipmap(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, 0);
+	
+	
+	
+	
+	
+	//Shader things
+	shaderProgram->SetUniform("in_Projection", glm::perspective(glm::radians(45.0f), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 100.0f));
 
 	glm::mat4 model(1.0f);
-	model = glm::translate(model, glm::vec3(0, WINDOW_HEIGHT - 100, 0));
-	model = glm::scale(model, glm::vec3(100, 100, 1));
+	model = glm::translate(model, glm::vec3(0, 0, -2.5f));
+	model = glm::rotate(model, glm::radians(angle), glm::vec3(0, 1, 0));
+
+	glActiveTexture(GL_TEXTURE0 + 1);
+	glBindTexture(GL_TEXTURE_2D, textureId);
 
 	shaderProgram->SetUniform("in_Model", model);
+	shaderProgram->SetUniform("in_Texture", 1);
 	shaderProgram->draw(shape);
 
-	angle += 0.1f
+	angle += 0.1f;
     
 	SDL_GL_SwapWindow(window);
   }
@@ -94,8 +126,9 @@ int main(int argc, char *argv[])
 }
 
 
-/*
 // testing
+/*
+// persp
 shaderProgram->SetUniform("in_Projection", glm::perspective(glm::radians(45.0f), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 100.0f));
 
 glm::mat4 model(1.0f);
@@ -108,7 +141,16 @@ shaderProgram->draw(shape);
 angle += 0.1f;
 
 
+//ortho
+shaderProgram->SetUniform("in_Projection", glm::ortho(0.0f, (float)WINDOW_WIDTH, 0.0f, (float)WINDOW_HEIGHT, 0.0f, 1.0f));
 
+model = glm::mat4 (1.0f);
+model = glm::translate(model, glm::vec3(0, WINDOW_HEIGHT - 100, 0));
+model = glm::scale(model, glm::vec3(100, 100, 1));
 
+shaderProgram->SetUniform("in_Model", model);
+shaderProgram->draw(shape);
+
+angle += 0.1f;
 
 */
