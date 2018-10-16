@@ -1,3 +1,6 @@
 ﻿  main.cpp
-main.obj : error LNK2019: unresolved external symbol _stbi_load referenced in function _main
-\\bournemouth.ac.uk\data\Student\Home\SciTech\s5063237\Desktop\traingle2\legacy\Debug\triangle.exe : fatal error LNK1120: 1 unresolved externals
+  triangle.vcxproj -> \\bournemouth.ac.uk\data\Student\Home\SciTech\s5063237\Desktop\traingle2\legacy\Debug\triangle.exe
+  ..\contrib\msvc-windows-x86\SDL2\bin\SDL2.dll
+          1 file(s) copied.
+  ..\contrib\msvc-windows-x86\glew\bin\glew32.dll
+          1 file(s) copied.

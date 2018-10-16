@@ -2,8 +2,8 @@
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
-#include <stb_image/stb_image.h>
-
+#include "stb_image.h"
+#include <time.h>
 #include <exception>
 
 #include "VertexBuffer.h"
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
   // OPENGL code
 
   VertexBuffer* positions = new VertexBuffer();
-  positions->add(glm::vec3(-0.5f, 0.5f, 0.0f));
+  positions->add(glm::vec3(0.0f, 0.5f, 0.0f));
   positions->add(glm::vec3(-0.5f, -0.5f, 0.0f));
   positions->add(glm::vec3(0.5f, -0.5f, 0.0f));
   
@@ -51,6 +51,32 @@ int main(int argc, char *argv[])
   shape->SetBuffer("in_TexCoord", texCoords);
 
   ShaderProgram *shaderProgram = new ShaderProgram("../shaders/simple.vert", "../shaders/simple.frag");
+
+  //	loading image
+  int w = 0;
+  int h = 0;
+  int channels = 0;
+
+  unsigned char *data = stbi_load("dice.png", &w, &h, &channels, 4);
+  if (!data)
+  {
+	  throw std::exception();
+  }
+
+  GLuint textureId = 0;
+  glGenTextures(1, &textureId);
+
+  if (!textureId)
+  {
+	  throw std::exception();
+  }
+  glBindTexture(GL_TEXTURE_2D, textureId);
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+  free(data);
+  glGenerateMipmap(GL_TEXTURE_2D);
+  glBindTexture(GL_TEXTURE_2D, 0);
+
+
 
   float angle = 0;
 
@@ -73,29 +99,7 @@ int main(int argc, char *argv[])
 	glClear(GL_COLOR_BUFFER_BIT);
     
 	
-	int w = 0;
-	int h = 0;
-	int channels = 0;
 
-	unsigned char *data = stbi_load("dice.png", &w, &h, &channels, 4);
-	if (!data)
-	{
-		throw std::exception();
-	}
-	
-	GLuint textureId = 0;
-	glGenTextures(1, &textureId);
-
-	if (!textureId)
-	{
-		throw std::exception();
-	}
-	glBindTexture(GL_TEXTURE_2D, textureId);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-	free(data);
-	glGenerateMipmap(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, 0);
-	
 	
 	
 	
@@ -114,7 +118,7 @@ int main(int argc, char *argv[])
 	shaderProgram->SetUniform("in_Texture", 1);
 	shaderProgram->draw(shape);
 
-	angle += 0.1f;
+	angle += 1.0f;
     
 	SDL_GL_SwapWindow(window);
   }

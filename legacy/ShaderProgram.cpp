@@ -66,7 +66,7 @@ ShaderProgram::ShaderProgram()
     glAttachShader(id, vertexShaderId);
     glAttachShader(id, fragmentShaderId);
     glBindAttribLocation(id, 0, "in_Position");
-    glBindAttribLocation(id, 1, "in_Color");
+    glBindAttribLocation(id, 1, "in_TexCoord");
 
     glLinkProgram(id);
     glGetProgramiv(id, GL_LINK_STATUS, &success);
@@ -147,7 +147,7 @@ ShaderProgram::ShaderProgram(std::string vert, std::string frag)
     glAttachShader(id, vertexShaderId);
     glAttachShader(id, fragmentShaderId);
     glBindAttribLocation(id, 0, "in_Position");
-    glBindAttribLocation(id, 1, "in_Color");
+    glBindAttribLocation(id, 1, "in_TexCoord");
 
     glLinkProgram(id);
     glGetProgramiv(id, GL_LINK_STATUS, &success);
@@ -213,6 +213,19 @@ void ShaderProgram::SetUniform(std::string uniform, glm::mat4 value)
 
 	glUseProgram(id);
 	glUniformMatrix4fv(uniformId, 1, GL_FALSE, glm::value_ptr(value));
+	glUseProgram(0);
+}
+
+void ShaderProgram::SetUniform(std::string uniform, int value)
+{
+	GLint uniformId = glGetUniformLocation(id, uniform.c_str());
+	if (uniformId == -1)
+	{
+		throw std::exception();
+	}
+
+	glUseProgram(id);
+	glUniform1i(uniformId, value);
 	glUseProgram(0);
 }
 
