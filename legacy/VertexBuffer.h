@@ -18,7 +18,7 @@ public:
 	void add(glm::vec3 value);
 	void add(glm::vec4 value);
 	
-	int GetComponents();
-	int GetDataSize();
-	GLuint GetId();
+	int getComponents();
+	int getDataSize();
+	GLuint getId();
 };

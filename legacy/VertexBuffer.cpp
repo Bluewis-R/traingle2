@@ -55,17 +55,17 @@ void VertexBuffer::add(glm::vec4 value)
 	dirty = true;
 }
 
-int VertexBuffer::GetComponents()
+int VertexBuffer::getComponents()
 {
 	return components;
 }
 
-int VertexBuffer::GetDataSize()
+int VertexBuffer::getDataSize()
 {
 	return data.size();
 }
 
-GLuint VertexBuffer::GetId()
+GLuint VertexBuffer::getId()
 {
 	if (dirty)
 	{

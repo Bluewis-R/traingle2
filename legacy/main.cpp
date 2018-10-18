@@ -9,9 +9,13 @@
 #include "VertexBuffer.h"
 #include "VertexArray.h"
 #include "ShaderProgram.h"
+#include "Texture.h"
 
-#define WINDOW_WIDTH 640
-#define WINDOW_HEIGHT 480
+#define WINDOW_WIDTH 800
+#define WINDOW_HEIGHT 600
+
+int windowWidth = 800;
+int windowHeight = 600;
 
 int main(int argc, char *argv[])
 {
@@ -36,6 +40,14 @@ int main(int argc, char *argv[])
 
   // OPENGL code
 
+  VertexArray *hallShape = new VertexArray("../re_hall_baked.obj");
+  Texture *hallTexture = new Texture("../re_hall_diffuse.png");
+  VertexArray *shape = new VertexArray("../curuthers.obj");
+  Texture *texture = new Texture("../curuthers_diffuse.png");
+  ShaderProgram *shader = new ShaderProgram("../simple.vert", "../simple.frag");
+
+  //old stuff
+  /*
   VertexBuffer* positions = new VertexBuffer();
   positions->add(glm::vec3(0.0f, 0.5f, 0.0f));
   positions->add(glm::vec3(-0.5f, -0.5f, 0.0f));
@@ -49,9 +61,10 @@ int main(int argc, char *argv[])
   VertexArray *shape = new VertexArray();
   shape->SetBuffer("in_Position", positions);
   shape->SetBuffer("in_TexCoord", texCoords);
+  */
 
   ShaderProgram *shaderProgram = new ShaderProgram("../shaders/simple.vert", "../shaders/simple.frag");
-
+  /*
   //	loading image
   int w = 0;
   int h = 0;
@@ -76,7 +89,7 @@ int main(int argc, char *argv[])
   glGenerateMipmap(GL_TEXTURE_2D);
   glBindTexture(GL_TEXTURE_2D, 0);
 
-
+  */
 
   float angle = 0;
 
@@ -95,15 +108,35 @@ int main(int argc, char *argv[])
       }
     }
 
+	SDL_GetWindowSize(window, &windowWidth, &windowHeight);
+	glViewport(0, 0, windowWidth, windowHeight);
 	glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
-    
-	
 
-	
-	
-	
-	
+	shaderProgram->setUniform("in_Projection", glm::perspective(glm::radians(45.0f),
+		(float)windowWidth / (float)windowHeight, 0.1f, 100.f));
+
+	// Create a "camera"
+	glm::mat4 model(1.0f);
+	model = glm::rotate(model, glm::radians(angle), glm::vec3(0, 1, 0));
+	shaderProgram->setUniform("in_View", glm::inverse(model));
+
+	// Draw the mansion
+	model = glm::mat4(1.0f);
+	model = glm::translate(model, glm::vec3(2.0f, -2.0f, -16.0f));
+	model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0, 1, 0));
+	shaderProgram->setUniform("in_Model", model);
+	shaderProgram->setUniform("in_Texture", hallTexture);
+	shaderProgram->draw(hallShape);
+
+	// Draw the cat
+	model = glm::mat4(1.0f);
+	model = glm::translate(model, glm::vec3(0, -2.1f, -20.0f));
+	model = glm::rotate(model, glm::radians(angle), glm::vec3(0, 1, 0));
+	shader->setUniform("in_Model", model);
+	shader->setUniform("in_Texture", texture);
+	shader->draw(shape);
+    /*
 	//Shader things
 	shaderProgram->SetUniform("in_Projection", glm::perspective(glm::radians(45.0f), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 100.0f));
 
@@ -111,12 +144,13 @@ int main(int argc, char *argv[])
 	model = glm::translate(model, glm::vec3(0, 0, -2.5f));
 	model = glm::rotate(model, glm::radians(angle), glm::vec3(0, 1, 0));
 
-	glActiveTexture(GL_TEXTURE0 + 1);
-	glBindTexture(GL_TEXTURE_2D, textureId);
+	
 
 	shaderProgram->SetUniform("in_Model", model);
 	shaderProgram->SetUniform("in_Texture", 1);
 	shaderProgram->draw(shape);
+	*/
+
 
 	angle += 1.0f;
     
