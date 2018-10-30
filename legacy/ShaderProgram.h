@@ -7,6 +7,7 @@
 
 #include <fstream>
 #include <string>
+#include <vector>
 
 class VertexArray;
 
@@ -20,6 +21,8 @@ class ShaderProgram
 {
 private:
 	GLuint id;
+	std::vector<Sampler> samplers;
+
 	std::string vertShader;
 	std::string fragShader;
 
