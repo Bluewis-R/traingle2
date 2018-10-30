@@ -23,6 +23,7 @@ private:
 	std::string vertShader;
 	std::string fragShader;
 
+
 public:
 	ShaderProgram();
 	ShaderProgram(std::string vert, std::string frag);

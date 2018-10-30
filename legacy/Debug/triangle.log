@@ -1,33 +1,29 @@
 ﻿  main.cpp
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\texture.h(8): error C2011: 'Texture': 'class' type redefinition
-  \\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\texture.h(8): note: see declaration of 'Texture'
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\main.cpp(44): error C2027: use of undefined type 'Texture'
-  \\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\texture.h(8): note: see declaration of 'Texture'
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\main.cpp(46): error C2027: use of undefined type 'Texture'
-  \\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\texture.h(8): note: see declaration of 'Texture'
+d:\university\traingle2\legacy\texture.h(8): error C2011: 'Texture': 'class' type redefinition
+  d:\university\traingle2\legacy\texture.h(8): note: see declaration of 'Texture'
+d:\university\traingle2\legacy\main.cpp(44): error C2027: use of undefined type 'Texture'
+  d:\university\traingle2\legacy\texture.h(8): note: see declaration of 'Texture'
+d:\university\traingle2\legacy\main.cpp(46): error C2027: use of undefined type 'Texture'
+  d:\university\traingle2\legacy\texture.h(8): note: see declaration of 'Texture'
   ShaderProgram.cpp
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\shaderprogram.cpp(241): error C2065: 'samplers': undeclared identifier
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\shaderprogram.cpp(241): error C2228: left of '.size' must have class/struct/union
-  \\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\shaderprogram.cpp(241): note: type is 'unknown-type'
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\shaderprogram.cpp(243): error C2065: 'samplers': undeclared identifier
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\shaderprogram.cpp(243): error C2228: left of '.at' must have class/struct/union
-  \\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\shaderprogram.cpp(243): note: type is 'unknown-type'
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\shaderprogram.cpp(243): error C2228: left of '.id' must have class/struct/union
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\shaderprogram.cpp(245): error C2065: 'samplers': undeclared identifier
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\shaderprogram.cpp(245): error C2228: left of '.at' must have class/struct/union
-  \\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\shaderprogram.cpp(245): note: type is 'unknown-type'
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\shaderprogram.cpp(245): error C2228: left of '.texture' must have class/struct/union
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\shaderprogram.cpp(257): error C2065: 'samplers': undeclared identifier
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\shaderprogram.cpp(257): error C2228: left of '.push_back' must have class/struct/union
-  \\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\shaderprogram.cpp(257): note: type is 'unknown-type'
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\shaderprogram.cpp(260): error C2065: 'samplers': undeclared identifier
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\shaderprogram.cpp(260): error C2228: left of '.size' must have class/struct/union
-  \\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\shaderprogram.cpp(260): note: type is 'unknown-type'
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\shaderprogram.cpp(260): error C2198: 'PFNGLUNIFORM1IPROC': too few arguments for call
-  stb_image.cpp
-  Texture.cpp
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\texture.cpp(16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2\legacy\texture.cpp(17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  VertexArray.cpp
-  VertexBuffer.cpp
+d:\university\traingle2\legacy\texture.h(8): error C2011: 'Texture': 'class' type redefinition
+  d:\university\traingle2\legacy\texture.h(8): note: see declaration of 'Texture'
+d:\university\traingle2\legacy\shaderprogram.cpp(243): error C2065: 'samplers': undeclared identifier
+d:\university\traingle2\legacy\shaderprogram.cpp(243): error C2228: left of '.size' must have class/struct/union
+  d:\university\traingle2\legacy\shaderprogram.cpp(243): note: type is 'unknown-type'
+d:\university\traingle2\legacy\shaderprogram.cpp(245): error C2065: 'samplers': undeclared identifier
+d:\university\traingle2\legacy\shaderprogram.cpp(245): error C2228: left of '.at' must have class/struct/union
+  d:\university\traingle2\legacy\shaderprogram.cpp(245): note: type is 'unknown-type'
+d:\university\traingle2\legacy\shaderprogram.cpp(245): error C2228: left of '.id' must have class/struct/union
+d:\university\traingle2\legacy\shaderprogram.cpp(247): error C2065: 'samplers': undeclared identifier
+d:\university\traingle2\legacy\shaderprogram.cpp(247): error C2228: left of '.at' must have class/struct/union
+  d:\university\traingle2\legacy\shaderprogram.cpp(247): note: type is 'unknown-type'
+d:\university\traingle2\legacy\shaderprogram.cpp(247): error C2228: left of '.texture' must have class/struct/union
+d:\university\traingle2\legacy\shaderprogram.cpp(259): error C2065: 'samplers': undeclared identifier
+d:\university\traingle2\legacy\shaderprogram.cpp(259): error C2228: left of '.push_back' must have class/struct/union
+  d:\university\traingle2\legacy\shaderprogram.cpp(259): note: type is 'unknown-type'
+d:\university\traingle2\legacy\shaderprogram.cpp(262): error C2065: 'samplers': undeclared identifier
+d:\university\traingle2\legacy\shaderprogram.cpp(262): error C2228: left of '.size' must have class/struct/union
+  d:\university\traingle2\legacy\shaderprogram.cpp(262): note: type is 'unknown-type'
+d:\university\traingle2\legacy\shaderprogram.cpp(262): error C2198: 'PFNGLUNIFORM1IPROC': too few arguments for call
   Generating Code...

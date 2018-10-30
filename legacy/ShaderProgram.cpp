@@ -1,6 +1,8 @@
 #include "ShaderProgram.h"
 #include "VertexArray.h"
 
+#include "Texture.h"
+
 ShaderProgram::ShaderProgram()
 {
   //  getting the vertex data
