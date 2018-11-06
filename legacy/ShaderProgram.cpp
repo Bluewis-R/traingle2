@@ -6,7 +6,7 @@
 ShaderProgram::ShaderProgram()
 {
   //  getting the vertex data
-  std::ifstream file("../shader/simple.vert");
+  std::ifstream file("simple.vert");
   if (!file.is_open())
   {
     throw std::exception();
@@ -23,7 +23,7 @@ ShaderProgram::ShaderProgram()
   file.close();
 
   // getting the fragment data
-  file.open("../shaders/simple.frag");
+  file.open("simple.frag");
   if (!file.is_open())
   {
     throw std::exception();

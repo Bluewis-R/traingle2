@@ -40,11 +40,11 @@ int main(int argc, char *argv[])
 
   // OPENGL code
 
-  VertexArray *hallShape = new VertexArray("../re_hall_baked.obj");
-  Texture *hallTexture = new Texture("../re_hall_diffuse.png");
-  VertexArray *shape = new VertexArray("../curuthers.obj");
-  Texture *texture = new Texture("../curuthers_diffuse.png");
-  ShaderProgram *shader = new ShaderProgram("../simple.vert", "../simple.frag");
+  VertexArray *hallShape = new VertexArray("re_hall_baked.obj");
+  Texture *hallTexture = new Texture("re_hall_diffuse.png");
+  VertexArray *shape = new VertexArray("curuthers.obj");
+  Texture *texture = new Texture("curuthers_diffuse.png");
+  ShaderProgram *shaderProgram = new ShaderProgram("simple.vert", "simple.frag");
 
   //old stuff
   /*
@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
   shape->SetBuffer("in_TexCoord", texCoords);
   */
 
-  ShaderProgram *shaderProgram = new ShaderProgram("../shaders/simple.vert", "../shaders/simple.frag");
+  //ShaderProgram *shaderProgram = new ShaderProgram("../shaders/simple.vert", "../shaders/simple.frag");
   /*
   //	loading image
   int w = 0;
@@ -133,9 +133,9 @@ int main(int argc, char *argv[])
 	model = glm::mat4(1.0f);
 	model = glm::translate(model, glm::vec3(0, -2.1f, -20.0f));
 	model = glm::rotate(model, glm::radians(angle), glm::vec3(0, 1, 0));
-	shader->setUniform("in_Model", model);
-	shader->setUniform("in_Texture", texture);
-	shader->draw(shape);
+	shaderProgram->setUniform("in_Model", model);
+	shaderProgram->setUniform("in_Texture", texture);
+	shaderProgram->draw(shape);
     /*
 	//Shader things
 	shaderProgram->SetUniform("in_Projection", glm::perspective(glm::radians(45.0f), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 100.0f));

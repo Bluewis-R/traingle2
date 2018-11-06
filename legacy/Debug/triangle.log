@@ -1,6 +1,4 @@
-﻿  Texture.cpp
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\texture.cpp(16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\texture.cpp(17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+﻿  ShaderProgram.cpp
   triangle.vcxproj -> \\bournemouth.ac.uk\data\Student\Home\SciTech\s5063237\Desktop\traingle2-MAIN\legacy\Debug\triangle.exe
   ..\contrib\msvc-windows-x86\SDL2\bin\SDL2.dll
           1 file(s) copied.
