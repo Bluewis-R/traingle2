@@ -92,9 +92,11 @@ int main(int argc, char *argv[])
   */
 
   float angle = 0;
-
-
   bool quit = false;
+
+  //glEnable(GL_CULL_FACE);
+  //glEnable(GL_DEPTH_TEST);
+
 	//while loop
   while(!quit)
   {
@@ -110,15 +112,22 @@ int main(int argc, char *argv[])
 
 	SDL_GetWindowSize(window, &windowWidth, &windowHeight);
 	glViewport(0, 0, windowWidth, windowHeight);
-	glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
+	//glEnable(GL_DEPTH_TEST);
 
 	shaderProgram->setUniform("in_Projection", glm::perspective(glm::radians(45.0f),
 		(float)windowWidth / (float)windowHeight, 0.1f, 100.f));
 
+	//	Shader
+	shaderProgram->setUniform("in_Emissive", glm::vec3(0, 0, 0));
+	shaderProgram->setUniform("in_Ambient", glm::vec3(0.2, 0.2, 0.2));
+	
+
+
 	// Create a "camera"
 	glm::mat4 model(1.0f);
-	model = glm::rotate(model, glm::radians(angle), glm::vec3(0, 1, 0));
+	model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0, 1, 0));
 	shaderProgram->setUniform("in_View", glm::inverse(model));
 
 	// Draw the mansion
@@ -152,7 +161,7 @@ int main(int argc, char *argv[])
 	*/
 
 
-	angle += 1.0f;
+	angle += 0.2f;
     
 	SDL_GL_SwapWindow(window);
   }

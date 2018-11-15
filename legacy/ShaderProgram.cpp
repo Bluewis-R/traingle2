@@ -70,6 +70,8 @@ ShaderProgram::ShaderProgram(std::string vert, std::string frag)
 	glBindAttribLocation(id, 1, "in_Color");
 	glBindAttribLocation(id, 2, "in_TexCoord");
 	glBindAttribLocation(id, 3, "in_Normal");
+	glBindAttribLocation(id, 4, "in_Emissive");
+	glBindAttribLocation(id, 5, "in_Ambient");
 
 	if (glGetError() != GL_NO_ERROR)
 	{
@@ -121,6 +123,20 @@ void ShaderProgram::draw(VertexArray *vertexArray)
 	glUseProgram(0);
 }
 
+void ShaderProgram::setUniform(std::string uniform, glm::vec3 value)
+{
+	GLint uniformId = glGetUniformLocation(id, uniform.c_str());
+
+	if (uniformId == -1)
+	{
+		throw std::exception();
+	}
+
+	glUseProgram(id);
+	glUniform3f(uniformId, value.x, value.y, value.z);
+	glUseProgram(0);
+}
+
 void ShaderProgram::setUniform(std::string uniform, glm::vec4 value)
 {
 	GLint uniformId = glGetUniformLocation(id, uniform.c_str());
@@ -162,6 +178,7 @@ void ShaderProgram::setUniform(std::string uniform, glm::mat4 value)
 	glUniformMatrix4fv(uniformId, 1, GL_FALSE, glm::value_ptr(value));
 	glUseProgram(0);
 }
+
 
 void ShaderProgram::setUniform(std::string uniform, Texture *texture)
 {
