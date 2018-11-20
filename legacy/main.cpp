@@ -38,64 +38,19 @@ int main(int argc, char *argv[])
 	  throw std::exception();
   }
 
-  // OPENGL code
-
+  //
   VertexArray *hallShape = new VertexArray("re_hall_baked.obj");
   Texture *hallTexture = new Texture("re_hall_diffuse.png");
   VertexArray *shape = new VertexArray("curuthers.obj");
   Texture *texture = new Texture("curuthers_diffuse.png");
   ShaderProgram *shaderProgram = new ShaderProgram("simple.vert", "simple.frag");
 
-  //old stuff
-  /*
-  VertexBuffer* positions = new VertexBuffer();
-  positions->add(glm::vec3(0.0f, 0.5f, 0.0f));
-  positions->add(glm::vec3(-0.5f, -0.5f, 0.0f));
-  positions->add(glm::vec3(0.5f, -0.5f, 0.0f));
-  
-  VertexBuffer* texCoords = new VertexBuffer();
-  texCoords->add(glm::vec2(0.5f, 0.0f));
-  texCoords->add(glm::vec2(0.0f, 1.0f));
-  texCoords->add(glm::vec2(1.0f, 1.0f));
-
-  VertexArray *shape = new VertexArray();
-  shape->SetBuffer("in_Position", positions);
-  shape->SetBuffer("in_TexCoord", texCoords);
-  */
-
-  //ShaderProgram *shaderProgram = new ShaderProgram("../shaders/simple.vert", "../shaders/simple.frag");
-  /*
-  //	loading image
-  int w = 0;
-  int h = 0;
-  int channels = 0;
-
-  unsigned char *data = stbi_load("dice.png", &w, &h, &channels, 4);
-  if (!data)
-  {
-	  throw std::exception();
-  }
-
-  GLuint textureId = 0;
-  glGenTextures(1, &textureId);
-
-  if (!textureId)
-  {
-	  throw std::exception();
-  }
-  glBindTexture(GL_TEXTURE_2D, textureId);
-  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-  free(data);
-  glGenerateMipmap(GL_TEXTURE_2D);
-  glBindTexture(GL_TEXTURE_2D, 0);
-
-  */
-
   float angle = 0;
   bool quit = false;
 
-  //glEnable(GL_CULL_FACE);
-  //glEnable(GL_DEPTH_TEST);
+  
+  glEnable(GL_CULL_FACE);
+  glEnable(GL_DEPTH_TEST);
 
 	//while loop
   while(!quit)
@@ -113,7 +68,7 @@ int main(int argc, char *argv[])
 	SDL_GetWindowSize(window, &windowWidth, &windowHeight);
 	glViewport(0, 0, windowWidth, windowHeight);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	//glEnable(GL_DEPTH_TEST);
 
 	shaderProgram->setUniform("in_Projection", glm::perspective(glm::radians(45.0f),

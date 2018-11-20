@@ -1,6 +1,6 @@
 #include "GameObject.h"
 
-GameObject::GameObject(std::string texturePath, std::string OBJPath);
+GameObject::GameObject(std::string texturePath, std::string OBJPath)
 {
 	m_texturePath = texturePath;
 	m_objectPath = OBJPath;

@@ -8,7 +8,7 @@
 class GameObject
 {
 private:
-	std::string m_texturePath, m_objectPath;
+	std::string m_name, m_texturePath, m_objectPath;
 
 	glm::vec3 m_position = glm::vec3(1.0f, 1.0f, 1.0f);
 	glm::vec3 m_rotation = glm::vec3(1.0f, 1.0f, 1.0f);
