@@ -1,5 +1,9 @@
 #include "ObjectManager.h"
 
+#include <vector>
+#include <string>
+#include "GameObject.h"
+
 ObjectManager::ObjectManager()
 {
 }

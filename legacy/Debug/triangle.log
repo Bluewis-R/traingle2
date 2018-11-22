@@ -1,6 +1,12 @@
-﻿  main.cpp
-  triangle.vcxproj -> \\bournemouth.ac.uk\data\Student\Home\SciTech\s5063237\Desktop\traingle2-MAIN\legacy\Debug\triangle.exe
-  ..\contrib\msvc-windows-x86\SDL2\bin\SDL2.dll
-          1 file(s) copied.
-  ..\contrib\msvc-windows-x86\glew\bin\glew32.dll
-          1 file(s) copied.
+﻿  ObjectManager.cpp
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.h(6): error C2039: 'vector': is not a member of 'std'
+  \\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\predefined c++ types (compiler internal)(256): note: see declaration of 'std'
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.h(6): error C2143: syntax error: missing ';' before '<'
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.h(6): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.h(6): error C2238: unexpected token(s) preceding ';'
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.h(14): error C2039: 'string': is not a member of 'std'
+  \\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\predefined c++ types (compiler internal)(256): note: see declaration of 'std'
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.h(14): error C2061: syntax error: identifier 'string'
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.cpp(24): error C2511: 'void ObjectManager::AddObject(std::string,std::string,std::string)': overloaded member function not found in 'ObjectManager'
+  \\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.h(3): note: see declaration of 'ObjectManager'
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.cpp(26): error C2065: 'm_GObjects': undeclared identifier
