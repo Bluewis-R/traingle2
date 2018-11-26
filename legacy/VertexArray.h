@@ -1,8 +1,16 @@
+#ifndef _VERTEXARRAY_H_
+#define _VERTEXARRAY_H_
+
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 
 #include <vector>
 #include <string>
+
+#include "VertexBuffer.h"
+
+#include <fstream>
+#include <iostream>
 
 class VertexBuffer;
 
@@ -23,3 +31,4 @@ public:
 	GLuint getId();
 
 };
+#endif

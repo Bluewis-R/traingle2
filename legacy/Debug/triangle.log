@@ -1,12 +1,51 @@
-﻿  ObjectManager.cpp
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.h(6): error C2039: 'vector': is not a member of 'std'
-  \\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\predefined c++ types (compiler internal)(256): note: see declaration of 'std'
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.h(6): error C2143: syntax error: missing ';' before '<'
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.h(6): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.h(6): error C2238: unexpected token(s) preceding ';'
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.h(14): error C2039: 'string': is not a member of 'std'
-  \\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\predefined c++ types (compiler internal)(256): note: see declaration of 'std'
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.h(14): error C2061: syntax error: identifier 'string'
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.cpp(24): error C2511: 'void ObjectManager::AddObject(std::string,std::string,std::string)': overloaded member function not found in 'ObjectManager'
-  \\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.h(3): note: see declaration of 'ObjectManager'
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.cpp(26): error C2065: 'm_GObjects': undeclared identifier
+﻿  GameObject.cpp
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\gameobject.cpp(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\gameobject.cpp(18): error C2556: 'int GameObject::Update(void)': overloaded function differs only by return type from 'void GameObject::Update(void)'
+  \\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\gameobject.h(32): note: see declaration of 'GameObject::Update'
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\gameobject.cpp(17): error C2371: 'GameObject::Update': redefinition; different basic types
+  \\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\gameobject.h(32): note: see declaration of 'GameObject::Update'
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\gameobject.cpp(19): error C2065: 'model': undeclared identifier
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\gameobject.cpp(20): error C2065: 'model': undeclared identifier
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\gameobject.cpp(21): error C2065: 'model': undeclared identifier
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\gameobject.cpp(21): error C2065: 'angle': undeclared identifier
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\gameobject.cpp(22): error C2065: 'shaderProgram': undeclared identifier
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\gameobject.cpp(22): error C2065: 'model': undeclared identifier
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\gameobject.cpp(23): error C2065: 'shaderProgram': undeclared identifier
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\gameobject.cpp(23): error C2065: 'texture': undeclared identifier
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\gameobject.cpp(24): error C2065: 'shaderProgram': undeclared identifier
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\gameobject.cpp(24): error C2065: 'shape': undeclared identifier
+  ObjectManager.cpp
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.cpp(21): error C3867: 'std::vector<GameObject *,std::allocator<_Ty>>::size': non-standard syntax; use '&' to create a pointer to member
+          with
+          [
+              _Ty=GameObject *
+          ]
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.cpp(21): error C2446: '<': no conversion from 'unsigned int (__thiscall std::vector<GameObject *,std::allocator<_Ty>>::* )(void) noexcept const' to 'int'
+          with
+          [
+              _Ty=GameObject *
+          ]
+  \\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.cpp(21): note: There is no context in which this conversion is possible
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.cpp(23): error C2819: type 'std::vector<GameObject *,std::allocator<_Ty>>' does not have an overloaded member 'operator ->'
+          with
+          [
+              _Ty=GameObject *
+          ]
+  \\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.h(8): note: see declaration of 'std::vector<GameObject *,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=GameObject *
+          ]
+  \\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.cpp(23): note: did you intend to use '.' instead?
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.cpp(23): error C2039: 'draw': is not a member of 'std::vector<GameObject *,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=GameObject *
+          ]
+  \\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.h(8): note: see declaration of 'std::vector<GameObject *,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=GameObject *
+          ]
+  main.cpp
+  Generating Code...

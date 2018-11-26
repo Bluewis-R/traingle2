@@ -1,8 +1,5 @@
 #include "VertexArray.h"
-#include "VertexBuffer.h"
 
-#include <fstream>
-#include <iostream>
 
 void VertexArray::splitStringWhitespace(std::string& input, std::vector<std::string>& output)
 {
