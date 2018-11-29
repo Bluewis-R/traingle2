@@ -1,10 +1,10 @@
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
-#include "Texture.h"
-#include "VertexArray.h"
-#include "String.h"
-#include <glm/>
+#include <string>
 
+class Texture;
+class VertexArray;
+class ShaderProgram;
 
 class GameObject
 {
@@ -18,7 +18,7 @@ private:
 	VertexArray* m_vertexArray; 
 	//Physics* m_physics;
 
-	glm::mat4(1.0f) model;
+	glm::mat4 m_model;
 
 public:
 	GameObject(std::string texturePath, std::string OBJPath);
@@ -30,5 +30,5 @@ public:
 	glm::vec3 GetRotation() { return m_rotation; };
 	glm::vec3 GetScale() { return m_scale; };
 
-	void Update();
+	void Update(ShaderProgram* _shader);
 };

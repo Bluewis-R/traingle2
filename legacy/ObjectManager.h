@@ -1,14 +1,17 @@
 #include <vector>
 #include <string>
-#include "GameObject.h"
+//#include "GameObject.h"
+
+class GameObject;
+class ShaderProgram;
 
 class ObjectManager
 {
 private:
 	std::vector<GameObject*> m_GObjects;
-
+	ShaderProgram* m_shader;
 public:
-	ObjectManager();
+	ObjectManager(ShaderProgram* _shader);
 	~ObjectManager();
 	void UpdatePhysics();
 	void UpdateDraw();

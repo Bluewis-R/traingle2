@@ -1,5 +1,8 @@
 #include "Texture.h"
 
+#include "stb_image.h"
+
+
 Texture::Texture(std::string path)
 {
 	int w = 0;

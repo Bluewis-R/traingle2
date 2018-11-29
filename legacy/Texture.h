@@ -3,9 +3,9 @@
 
 #include <GL/glew.h>
 #include <glm/glm.hpp>
-
-#include "stb_image.h"
 #include <string>
+
+//class GLUint;
 
 class Texture
 {

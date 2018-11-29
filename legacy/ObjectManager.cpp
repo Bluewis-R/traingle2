@@ -1,9 +1,9 @@
 #include "ObjectManager.h"
+#include "GameObject.h"
 
-
-
-ObjectManager::ObjectManager()
+ObjectManager::ObjectManager(ShaderProgram* _shader)
 {
+	m_shader = _shader;
 }
 
 ObjectManager::~ObjectManager()
@@ -18,9 +18,9 @@ void ObjectManager::UpdatePhysics()
 
 void ObjectManager::UpdateDraw()
 {
-	for (int i = 0; i < m_GObjects.size; i++)
+	for (int i = 0; i < m_GObjects.size(); i++)
 	{
-		m_GObjects->draw();
+		m_GObjects.at(i)->Update(m_shader);
 	}
 
 }

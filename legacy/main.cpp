@@ -42,7 +42,8 @@ int main(int argc, char *argv[])
   }
 
   //objectmanager
-  ObjectManager* objectManager = new ObjectManager();
+  ShaderProgram *shaderProgram = new ShaderProgram("simple.vert", "simple.frag");
+  ObjectManager* objectManager = new ObjectManager(shaderProgram);
   objectManager->AddObject("hall", "re_hall_baked.obj", "re_hall_diffuse.png");
   objectManager->AddObject("cat", "curuthers.obj", "curuthers.png");
   /*
@@ -51,7 +52,6 @@ int main(int argc, char *argv[])
   VertexArray *shape = new VertexArray("curuthers.obj");
   Texture *texture = new Texture("curuthers.png");
   */
-  ShaderProgram *shaderProgram = new ShaderProgram("simple.vert", "simple.frag");
   
   float angle = 0;
   //bool quit = false;
