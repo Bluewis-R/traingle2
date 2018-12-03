@@ -16,6 +16,6 @@ public:
 	void UpdatePhysics();
 	void UpdateDraw();
 
-	void AddObject(std::string _name, std::string _OBJpath, std::string _TEXpath);
+	void AddObject(std::string _name, std::string _TEXpath, std::string _OBJpath);
 
 };

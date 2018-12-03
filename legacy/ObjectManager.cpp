@@ -25,9 +25,9 @@ void ObjectManager::UpdateDraw()
 
 }
 
-void ObjectManager::AddObject(std::string _name, std::string _OBJpath, std::string _TEXpath)
+void ObjectManager::AddObject(std::string _name, std::string _TEXpath, std::string _OBJpath)
 {
-	GameObject* temp = new GameObject(_OBJpath, _TEXpath);
+	GameObject* temp = new GameObject(_TEXpath, _OBJpath);
 	m_GObjects.push_back(temp);
 	//delete temp;
 	//new GameObject(_OBJpath, _TEXpath)
