@@ -16,7 +16,7 @@ private:
 	glm::vec3 m_scale = glm::vec3(1.0f, 1.0f, 1.0f);
 	Texture* m_texture;
 	VertexArray* m_vertexArray; 
-	//Physics* m_physics;
+	Physics* m_physics;
 
 	glm::mat4 m_model;
 

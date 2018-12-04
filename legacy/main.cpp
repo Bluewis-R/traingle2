@@ -53,7 +53,6 @@ int main(int argc, char *argv[])
 
 
 
-
   /*
   VertexArray *hallShape = new VertexArray("re_hall_baked.obj");
   Texture *hallTexture = new Texture("re_hall_diffuse.png");

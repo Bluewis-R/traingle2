@@ -135,16 +135,20 @@ copy ..\contrib\msvc-windows-x86\glew\bin\*.dll $(OutputPath)</Command>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player.h" />
     <ClCompile Include="ShaderProgram.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="VertexArray.cpp" />
     <ClCompile Include="VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="stb_image.h" />
