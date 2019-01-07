@@ -82,12 +82,25 @@ void Player::temp()
 
 void Player::Update()
 {
+	//	Degbugging controls
+	glm::vec3 currentPos = m_camera->GetPosition();
+	float dt = (float)m_deltaTime->GetDeltaTime()/1000.0f;
 	if (m_wKey_DOWN)
 	{
-		m_camera->SetPosition(glm::vec3(0.0f, m_camera->GetPosition().x + 1, 0.0f));
-		std::cout << "y" << m_camera->GetPosition().y << std::endl;
+		m_camera->SetPosition(glm::vec3(currentPos.x, currentPos.y, currentPos.z - 3*dt));
 	}
-	
+	if (m_sKey_DOWN)
+	{
+		m_camera->SetPosition(glm::vec3(currentPos.x, currentPos.y, currentPos.z + 3*dt));
+	}	
+	if (m_aKey_DOWN)
+	{
+		m_camera->SetPosition(glm::vec3(currentPos.x - 3*dt, currentPos.y, currentPos.z));
+	}	
+	if (m_dKey_DOWN)
+	{
+		m_camera->SetPosition(glm::vec3(currentPos.x + 3*dt, currentPos.y, currentPos.z));
+	}
 
 
 

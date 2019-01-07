@@ -50,13 +50,15 @@ int main(int argc, char *argv[])
   //	objectmanager
   ShaderProgram* shaderProgram = new ShaderProgram("simple.vert", "simple.frag");
   ObjectManager* objectManager = new ObjectManager(shaderProgram);
-  objectManager->AddObject("hall", "re_hall_diffuse.png", "re_hall_baked.obj");
-  //objectManager->AddObject("cat", "curuthers_diffuse.png", "curuthers.obj");
-	GameObject* playerModel = new GameObject("curuthers_diffuse.png", "curuthers.obj");
-	//	camera
-	Camera* camera = new Camera(shaderProgram, dTime);
-	//	Player
-	Player* player = new Player(dTime, playerModel, camera);
+  //objectManager->AddObject("skybox", "modelandtextures/skybox.png", "modelandtextures/skybox.obj");
+  objectManager->AddObject("hall", "res/re_hall_diffuse.png", "modelandtextures/re_hall_baked.obj");
+  objectManager->AddObject("obj2", "modelandtextures/re_hall_diffuse.png", "modelandtextures/object2.obj");
+  //objectManager->AddObject("cat", "curuthers_diffuse.png", "/models/curuthers.obj");
+  GameObject* playerModel = new GameObject("modelandtextures/curuthers_diffuse.png", "modelandtextures/curuthers.obj");
+  //	camera
+  Camera* camera = new Camera(shaderProgram, dTime);
+  //	Player
+  Player* player = new Player(dTime, playerModel, camera);
 
 
 
@@ -99,8 +101,8 @@ int main(int argc, char *argv[])
 		(float)windowWidth / (float)windowHeight, 0.1f, 100.f));
 
 	//	Shader
-	shaderProgram->setUniform("in_Emissive", glm::vec3(0, 0, 0));
-	shaderProgram->setUniform("in_Ambient", glm::vec3(0.2, 0.2, 0.2));
+	shaderProgram->setUniform("in_Emissive", glm::vec3(0, 0.1, 0));
+	shaderProgram->setUniform("in_Ambient", glm::vec3(0.4, 0.3, 0.3));
 	objectManager->UpdateDraw();
 
 	// Create a "camera"
