@@ -3,6 +3,7 @@
 #include "ShaderProgram.h"
 #include "Texture.h"
 #include "VertexArray.h"
+#include "Physics.h"
 
 GameObject::GameObject(std::string texturePath, std::string OBJPath)
 {
@@ -31,5 +32,3 @@ void GameObject::Update(ShaderProgram* _shader)
 	_shader->draw(m_vertexArray);
 	
 }
-
-

@@ -1,18 +1,7 @@
-﻿  Camera.cpp
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\camera.h(11): error C2061: syntax error: identifier 'ShaderProgram'
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\camera.cpp(6): error C2511: 'void Camera::Update(ShaderProgram *)': overloaded member function not found in 'Camera'
-  \\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\camera.h(4): note: see declaration of 'Camera'
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\camera.cpp(7): error C2597: illegal reference to non-static member 'Camera::m_model'
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\camera.cpp(8): error C2065: 'model': undeclared identifier
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\camera.cpp(9): error C2065: 'model': undeclared identifier
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\camera.cpp(9): error C2661: 'ShaderProgram::setUniform': no overloaded function takes 1 arguments
-  GameObject.cpp
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\gameobject.h(19): error C2143: syntax error: missing ';' before '*'
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\gameobject.h(19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\gameobject.h(19): error C2238: unexpected token(s) preceding ';'
-  ObjectManager.cpp
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\gameobject.h(19): error C2143: syntax error: missing ';' before '*'
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\gameobject.h(19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\gameobject.h(19): error C2238: unexpected token(s) preceding ';'
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\objectmanager.cpp(21): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
+﻿  Player.cpp
+d:\university\traingle2\legacy\deltatime.h(18): warning C4244: '=': conversion from 'float' to 'unsigned long', possible loss of data
+  triangle.vcxproj -> D:\UNIVERSITY\traingle2\legacy\Debug\triangle.exe
+  ..\contrib\msvc-windows-x86\SDL2\bin\SDL2.dll
+          1 file(s) copied.
+  ..\contrib\msvc-windows-x86\glew\bin\glew32.dll
+          1 file(s) copied.

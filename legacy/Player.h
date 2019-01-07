@@ -1,5 +1,9 @@
 #include <SDL2/SDL.h>
 
+class GameObject;
+class DeltaTime;
+class Camera;
+
 class Player
 {
 private:
@@ -8,8 +12,13 @@ private:
 	bool m_aKey_DOWN;
 	bool m_sKey_DOWN;
 
-
+	DeltaTime* m_deltaTime;
+	GameObject* m_playerObject;
+	Camera* m_camera;
 public:
-	void UpdateKeys(SDL_Event &_event);
-
+	Player(DeltaTime* _deltaTime, GameObject* _gameObject, Camera* _camera);
+	void UpdateKeys();
+	void Update();
+	void CameraUpdate();
+	void temp();
 };

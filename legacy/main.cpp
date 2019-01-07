@@ -10,9 +10,13 @@
 #include "VertexArray.h"
 #include "ShaderProgram.h"
 #include "Texture.h"
-
+#include "Camera.h"
+#include "DeltaTime.h"
 #include "ObjectManager.h"
+#include "GameObject.h"
+#include "Player.h"
 
+//class Player;
 
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600
@@ -40,15 +44,19 @@ int main(int argc, char *argv[])
   {
 	  throw std::exception();
   }
+	//	deltaTime
+	DeltaTime* dTime = new DeltaTime();
 
-  //objectmanager
-  ShaderProgram *shaderProgram = new ShaderProgram("simple.vert", "simple.frag");
+  //	objectmanager
+  ShaderProgram* shaderProgram = new ShaderProgram("simple.vert", "simple.frag");
   ObjectManager* objectManager = new ObjectManager(shaderProgram);
   objectManager->AddObject("hall", "re_hall_diffuse.png", "re_hall_baked.obj");
-  objectManager->AddObject("cat", "curuthers_diffuse.png", "curuthers.obj");
-
-
-
+  //objectManager->AddObject("cat", "curuthers_diffuse.png", "curuthers.obj");
+	GameObject* playerModel = new GameObject("curuthers_diffuse.png", "curuthers.obj");
+	//	camera
+	Camera* camera = new Camera(shaderProgram, dTime);
+	//	Player
+	Player* player = new Player(dTime, playerModel, camera);
 
 
 
@@ -68,15 +76,20 @@ int main(int argc, char *argv[])
 	//while loop
   for(bool quit = false; !quit;)
   {
-    SDL_Event event = {0};
+		//	updates the keys of the player
+		player->UpdateKeys();
+		//	Setting the Initial time for the loop
+		dTime->SetInitialTime();
+		
+		player->Update();
+		camera->Update();
 
-    while(SDL_PollEvent(&event))
-    {
-      if (event.type == SDL_QUIT)
-      {
-        quit = true;
-      }
-    }
+
+
+
+
+
+
 
 	SDL_GetWindowSize(window, &windowWidth, &windowHeight);
 	glViewport(0, 0, windowWidth, windowHeight);
@@ -91,10 +104,12 @@ int main(int argc, char *argv[])
 	objectManager->UpdateDraw();
 
 	// Create a "camera"
+	camera->Update();
+	/*
 	glm::mat4 model(1.0f);
 	model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0, 1, 0));
 	shaderProgram->setUniform("in_View", glm::inverse(model));
-
+	*/
 
 	/*
 
@@ -137,6 +152,10 @@ int main(int argc, char *argv[])
 	shaderProgram->draw(shape);
 	*/
 
+	//	DeltaTime calculation
+	dTime->CalculateDeltaTime();
+
+
 
 	angle += 0.2f;
     
@@ -144,6 +163,7 @@ int main(int argc, char *argv[])
   }
 
   delete objectManager;
+	delete camera;
   SDL_DestroyWindow(window);
   SDL_Quit();
 

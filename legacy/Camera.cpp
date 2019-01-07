@@ -1,10 +1,22 @@
 #include "Camera.h"
 
 #include "ShaderProgram.h"
+#include "DeltaTime.h"
 
-void Camera::Update(ShaderProgram* _shader)
+
+
+Camera::Camera(ShaderProgram* _shader, DeltaTime* _deltaTime)
+{
+	m_shader = _shader;
+	m_dtime = _deltaTime;
+}
+
+void Camera::Update()
 {
 	m_model = glm::mat4(1.0f);
-	model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0, 1, 0));
-	_shader->setUniform("in_View", glm::inverse(model));
+	m_model = glm::translate(m_model, m_position);
+	m_model = glm::rotate(m_model, m_rotation.x, glm::vec3(1, 0, 0));
+	m_model = glm::rotate(m_model, m_rotation.y, glm::vec3(0, 1, 0));
+	m_model = glm::rotate(m_model, m_rotation.z, glm::vec3(0, 0, 1));
+	m_shader->setUniform("in_View", glm::inverse(m_model));
 }

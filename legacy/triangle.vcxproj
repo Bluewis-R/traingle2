@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -136,12 +136,14 @@ copy ..\contrib\msvc-windows-x86\glew\bin\*.dll $(OutputPath)</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="DeltaTime.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Player.h" />
-    <ClCompile Include="ShaderProgram.cpp" />
+    <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="ShaderProgram.cpp" />
+    <ClCompile Include="DeltaTime.h" />
     <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="VertexArray.cpp" />
@@ -151,6 +153,8 @@ copy ..\contrib\msvc-windows-x86\glew\bin\*.dll $(OutputPath)</Command>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="ObjectManager.h" />
+    <ClInclude Include="Physics.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="VertexArray.h" />
