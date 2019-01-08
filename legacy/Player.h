@@ -11,6 +11,10 @@ private:
 	bool m_dKey_DOWN;
 	bool m_aKey_DOWN;
 	bool m_sKey_DOWN;
+	bool m_shiftKey_DOWN;
+	bool m_spaceKey_DOWN;
+	bool m_rightKey_DOWN;
+	bool m_leftKey_DOWN;
 
 	DeltaTime* m_deltaTime;
 	GameObject* m_playerObject;

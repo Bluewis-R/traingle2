@@ -50,11 +50,11 @@ int main(int argc, char *argv[])
   //	objectmanager
   ShaderProgram* shaderProgram = new ShaderProgram("simple.vert", "simple.frag");
   ObjectManager* objectManager = new ObjectManager(shaderProgram);
-  //objectManager->AddObject("skybox", "modelandtextures/skybox.png", "modelandtextures/skybox.obj");
-  objectManager->AddObject("hall", "res/re_hall_diffuse.png", "modelandtextures/re_hall_baked.obj");
-  objectManager->AddObject("obj2", "modelandtextures/re_hall_diffuse.png", "modelandtextures/object2.obj");
-  //objectManager->AddObject("cat", "curuthers_diffuse.png", "/models/curuthers.obj");
-  GameObject* playerModel = new GameObject("modelandtextures/curuthers_diffuse.png", "modelandtextures/curuthers.obj");
+  //objectManager->AddObject("skybox", "res/skybox.png", "res/skybox.obj");
+  objectManager->AddObject("hall", "res/re_hall_diffuse.png", "res/re_hall_baked.obj");
+  objectManager->AddObject("obj2", "res/re_hall_diffuse.png", "res/object2.obj");
+  //objectManager->AddObject("cat", "res/curuthers_diffuse.png", "res/curuthers.obj");
+  GameObject* playerModel = new GameObject("res/curuthers_diffuse.png", "res/curuthers.obj");
   //	camera
   Camera* camera = new Camera(shaderProgram, dTime);
   //	Player

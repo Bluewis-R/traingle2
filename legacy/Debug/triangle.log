@@ -1,6 +1,11 @@
-﻿  main.cpp
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\traingle2-main\legacy\deltatime.h(18): warning C4244: '=': conversion from 'float' to 'unsigned long', possible loss of data
-  triangle.vcxproj -> \\bournemouth.ac.uk\data\Student\Home\SciTech\s5063237\Desktop\traingle2-MAIN\legacy\Debug\triangle.exe
+﻿  GameObject.cpp
+  Physics.cpp
+d:\university\traingle2\legacy\deltatime.h(18): warning C4244: '=': conversion from 'float' to 'unsigned long', possible loss of data
+  PhysicsManager.cpp
+d:\university\traingle2\legacy\physicsmanager.cpp(8): warning C4018: '<': signed/unsigned mismatch
+d:\university\traingle2\legacy\physicsmanager.cpp(10): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  triangle.vcxproj -> D:\UNIVERSITY\traingle2\legacy\Debug\triangle.exe
   ..\contrib\msvc-windows-x86\SDL2\bin\SDL2.dll
           1 file(s) copied.
   ..\contrib\msvc-windows-x86\glew\bin\glew32.dll

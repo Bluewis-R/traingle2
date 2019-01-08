@@ -23,47 +23,73 @@ void Player::UpdateKeys()						//	This updates the booleans for the player class
 	{
 		if (event.type == SDL_KEYDOWN)
 		{
-			if (event.key.keysym.sym == SDLK_w)						//  forward
+			if (event.key.keysym.sym == SDLK_w)
 			{
 				m_wKey_DOWN = true;
-			}
-		
-			if (event.key.keysym.sym == SDLK_s)						//  backward
+			}		
+			if (event.key.keysym.sym == SDLK_s)
 			{
 				m_sKey_DOWN = true;
-			}
-	
-			if (event.key.keysym.sym == SDLK_a)						//  left
+			}	
+			if (event.key.keysym.sym == SDLK_a)
 			{
 				m_aKey_DOWN = true;
-			}
-		
-			if (event.key.keysym.sym == SDLK_d)						//  right
+			}		
+			if (event.key.keysym.sym == SDLK_d)
 			{
 				m_dKey_DOWN = true;
+			}
+			if (event.key.keysym.sym == SDLK_SPACE)
+			{
+				m_spaceKey_DOWN = true;
+			}
+			if (event.key.keysym.sym == SDLK_LSHIFT)
+			{
+				m_shiftKey_DOWN = true;
+			}
+			if (event.key.keysym.sym == SDLK_RIGHT)
+			{
+				m_rightKey_DOWN = true;
+			}
+			if (event.key.keysym.sym == SDLK_LEFT)
+			{
+				m_leftKey_DOWN = true;
 			}
 
 		}
 		else if (event.type == SDL_KEYUP)
 		{
-			if (event.key.keysym.sym == SDLK_w)						//  forward
+			if (event.key.keysym.sym == SDLK_w)
 			{
 				m_wKey_DOWN = false;
 			}
-
-			if (event.key.keysym.sym == SDLK_s)						//  backward
+			if (event.key.keysym.sym == SDLK_s)
 			{
 				m_sKey_DOWN = false;
 			}
-
-			if (event.key.keysym.sym == SDLK_a)						//  left
+			if (event.key.keysym.sym == SDLK_a)
 			{
 				m_aKey_DOWN = false;
 			}
-
-			if (event.key.keysym.sym == SDLK_d)						//  right
+			if (event.key.keysym.sym == SDLK_d)
 			{
 				m_dKey_DOWN = false;
+			}
+			if (event.key.keysym.sym == SDLK_SPACE)
+			{
+				m_spaceKey_DOWN = false;
+			}
+			if (event.key.keysym.sym == SDLK_LSHIFT)
+			{
+				m_shiftKey_DOWN = false;
+			}
+			if (event.key.keysym.sym == SDLK_RIGHT)
+			{
+				m_rightKey_DOWN = false;
+			}
+			if (event.key.keysym.sym == SDLK_LEFT)
+			{
+				m_leftKey_DOWN = false;
 			}
 		}
 	}
@@ -84,6 +110,7 @@ void Player::Update()
 {
 	//	Degbugging controls
 	glm::vec3 currentPos = m_camera->GetPosition();
+	glm::vec3 currentRot = m_camera->GetRotation();
 	float dt = (float)m_deltaTime->GetDeltaTime()/1000.0f;
 	if (m_wKey_DOWN)
 	{
@@ -101,9 +128,23 @@ void Player::Update()
 	{
 		m_camera->SetPosition(glm::vec3(currentPos.x + 3*dt, currentPos.y, currentPos.z));
 	}
-
-
-
+	if (m_shiftKey_DOWN)
+	{
+		m_camera->SetPosition(glm::vec3(currentPos.x, currentPos.y - 3 * dt, currentPos.z));
+	}	
+	if (m_spaceKey_DOWN)
+	{
+		m_camera->SetPosition(glm::vec3(currentPos.x, currentPos.y + 3 * dt, currentPos.z));
+	}
+	if (m_rightKey_DOWN)
+	{
+		m_camera->SetRotation(glm::vec3(currentRot.x , currentRot.y - dt, currentRot.z));
+	}
+	if (m_leftKey_DOWN)
+	{
+		m_camera->SetRotation(glm::vec3(currentRot.x, currentRot.y + dt, currentRot.z));
+	}
+	
 
 	m_camera->Update();
 }

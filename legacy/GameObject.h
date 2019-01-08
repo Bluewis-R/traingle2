@@ -17,7 +17,7 @@ private:
 	glm::vec3 m_scale = glm::vec3(1.0f, 1.0f, 1.0f);
 	Texture* m_texture;
 	VertexArray* m_vertexArray; 
-	Physics* m_physics = NULL;
+	Physics* m_physics;
 
 	glm::mat4 m_model;
 
@@ -30,6 +30,7 @@ public:
 	glm::vec3 GetPosition() { return m_position; };
 	glm::vec3 GetRotation() { return m_rotation; };
 	glm::vec3 GetScale() { return m_scale; };
+	Physics* GetPhysics() { return m_physics; }
 
 	void Update(ShaderProgram* _shader);
 };
