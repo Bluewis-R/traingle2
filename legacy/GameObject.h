@@ -6,6 +6,7 @@ class Texture;
 class VertexArray;
 class ShaderProgram;
 class Physics;
+class DeltaTime;
 
 class GameObject
 {
@@ -27,10 +28,14 @@ public:
 	void SetPosition(glm::vec3 pos) { m_position = pos; }
 	void SetRotation(glm::vec3 rot) { m_rotation = rot; }
 	void SetScale(glm::vec3 scale) { m_scale = scale; }
+	void SetName(std::string _name) { m_name = _name; }
 	glm::vec3 GetPosition() { return m_position; };
 	glm::vec3 GetRotation() { return m_rotation; };
 	glm::vec3 GetScale() { return m_scale; };
+	std::string GetName() { return m_name; }
+
 	Physics* GetPhysics() { return m_physics; }
+	void SetPhysics(DeltaTime* _dTime);
 
 	void Update(ShaderProgram* _shader);
 };

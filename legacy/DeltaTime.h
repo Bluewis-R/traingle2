@@ -1,4 +1,5 @@
 #include <chrono>
+#include <iostream>
 
 class DeltaTime
 {
@@ -8,7 +9,7 @@ private:
 	 unsigned long m_initialTime;
 	 unsigned long m_endTime;
 
-	 unsigned long m_deltaTime;
+	 unsigned long m_deltaTime = 16;
 	 
 public:
 	DeltaTime();

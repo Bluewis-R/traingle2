@@ -15,7 +15,8 @@ public:
 	~ObjectManager();
 	void UpdatePhysics();
 	void UpdateDraw();
-
+	int NumberOfObjects() { return m_GObjects.size(); }
+	GameObject* GetGameObject(int _i) { return m_GObjects.at(_i); }
 	void AddObject(std::string _name, std::string _TEXpath, std::string _OBJpath);
-
+	GameObject* Edit(std::string _string);
 };

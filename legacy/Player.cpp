@@ -15,7 +15,8 @@ Player::Player(DeltaTime* _deltaTime, GameObject* _gameObject, Camera* _camera)
 	m_camera = _camera;
 }
 
-void Player::UpdateKeys()						//	This updates the booleans for the player class
+//	This updates the booleans for the player class
+void Player::UpdateKeys()						
 {
 	SDL_Event event = { 0 };
 	
@@ -101,11 +102,11 @@ void Player::temp()
 	if (m_wKey_DOWN)
 	{
 		//float a = m_playerObject->GetPosition().y + (float)m_deltaTime->GetDeltaTime();
-
 		m_playerObject->SetPosition(glm::vec3(0, 1, 0));
 	}
 }
 
+//	This function moves the camera dependand to the input keys
 void Player::Update()
 {
 	//	Degbugging controls

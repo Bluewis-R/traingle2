@@ -1,10 +1,7 @@
-﻿  GameObject.cpp
-  Physics.cpp
-d:\university\traingle2\legacy\deltatime.h(18): warning C4244: '=': conversion from 'float' to 'unsigned long', possible loss of data
-  PhysicsManager.cpp
-d:\university\traingle2\legacy\physicsmanager.cpp(8): warning C4018: '<': signed/unsigned mismatch
-d:\university\traingle2\legacy\physicsmanager.cpp(10): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
+﻿  main.cpp
+d:\university\traingle2\legacy\deltatime.h(19): warning C4244: '=': conversion from 'float' to 'unsigned long', possible loss of data
+d:\university\traingle2\legacy\physics.h(6): warning C4305: 'initializing': truncation from 'double' to 'float'
+Debug\DeltaTime.obj : warning LNK4042: object specified more than once; extras ignored
   triangle.vcxproj -> D:\UNIVERSITY\traingle2\legacy\Debug\triangle.exe
   ..\contrib\msvc-windows-x86\SDL2\bin\SDL2.dll
           1 file(s) copied.

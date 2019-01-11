@@ -2,13 +2,6 @@
 
 DeltaTime::DeltaTime()
 {
-	//	Initilises the end point,
-	//	note for future: m_initialTime may need to be initilised 
-	CalculateDeltaTime();	
-
-	unsigned long k = GetDeltaTime();
-
-
 }
 
 void DeltaTime::SetInitialTime()
@@ -20,4 +13,5 @@ void DeltaTime::CalculateDeltaTime()
 {
 	m_endTime = std::chrono::system_clock::now().time_since_epoch() / std::chrono::milliseconds(1);
 	m_deltaTime = (m_endTime - m_initialTime);
+	std::cout << "dt : " << m_deltaTime << std::endl;
 }

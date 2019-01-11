@@ -13,6 +13,8 @@
 #include "Camera.h"
 #include "DeltaTime.h"
 #include "ObjectManager.h"
+#include "Physics.h"
+#include "PhysicsManager.h"
 #include "GameObject.h"
 #include "Player.h"
 
@@ -47,29 +49,48 @@ int main(int argc, char *argv[])
 	//	deltaTime
 	DeltaTime* dTime = new DeltaTime();
 
-  //	objectmanager
+  //	Defining Objects
   ShaderProgram* shaderProgram = new ShaderProgram("simple.vert", "simple.frag");
   ObjectManager* objectManager = new ObjectManager(shaderProgram);
-  //objectManager->AddObject("skybox", "res/skybox.png", "res/skybox.obj");
-  objectManager->AddObject("hall", "res/re_hall_diffuse.png", "res/re_hall_baked.obj");
-  objectManager->AddObject("obj2", "res/re_hall_diffuse.png", "res/object2.obj");
-  //objectManager->AddObject("cat", "res/curuthers_diffuse.png", "res/curuthers.obj");
+  objectManager->AddObject("skybox", "res/skybox.png", "res/skybox.obj");
+	objectManager->AddObject("sp", "res/earth.png", "res/sphere.obj");
+	objectManager->AddObject("sp2", "res/earth.png", "res/sphere.obj");
+	objectManager->AddObject("sp3", "res/earth.png", "res/sphere.obj");
+	
+	objectManager->AddObject("Floor", "res/re_hall_diffuse.png", "res/plane.obj");
+
+
   GameObject* playerModel = new GameObject("res/curuthers_diffuse.png", "res/curuthers.obj");
   //	camera
   Camera* camera = new Camera(shaderProgram, dTime);
   //	Player
   Player* player = new Player(dTime, playerModel, camera);
+	//	Physics
+
+	//	Setting up scene
+	objectManager->Edit("skybox")->SetScale(glm::vec3(20.0f, 20.0f, 20.0f));
+	objectManager->Edit("sp")->SetPhysics(dTime);
+	objectManager->Edit("sp2")->SetPhysics(dTime);
+	objectManager->Edit("sp3")->SetPhysics(dTime);
+	objectManager->Edit("sp")->SetPosition(glm::vec3(0.0f, 3.5f, 3.0f));
+	objectManager->Edit("sp2")->SetPosition(glm::vec3(3.0f, 3.5f, 0.0f));
+	objectManager->Edit("sp3")->SetPosition(glm::vec3(-3.0f, 3.0f, 1.0f));
+
+	objectManager->Edit("sp2")->GetPhysics()->SetForce(glm::vec3(-100.0f, 0.0f, 0.0f));
+	objectManager->Edit("sp3")->GetPhysics()->SetForce(glm::vec3(100.0f, 0.0f, 0.0f));
+
+	
+	objectManager->Edit("Floor")->SetPhysics(dTime);
+	objectManager->Edit("Floor")->GetPhysics()->SetStatic(true);
+	objectManager->Edit("Floor")->SetPosition(glm::vec3(0.0f, -2.0f, 0.0f));
+	objectManager->Edit("Floor")->SetScale(glm::vec3(50.0f, 1.0f, 50.0f));
+	objectManager->Edit("Floor")->GetPhysics()->SetColliderType("Plane");
 
 
 
 
-  /*
-  VertexArray *hallShape = new VertexArray("re_hall_baked.obj");
-  Texture *hallTexture = new Texture("re_hall_diffuse.png");
-  VertexArray *shape = new VertexArray("curuthers.obj");
-  Texture *texture = new Texture("curuthers.png");
-  */
-  
+	PhysicsManager* physicsManager = new PhysicsManager(objectManager);
+
   float angle = 0;
   
   glEnable(GL_CULL_FACE);
@@ -83,10 +104,12 @@ int main(int argc, char *argv[])
 		//	Setting the Initial time for the loop
 		dTime->SetInitialTime();
 		
+		physicsManager->UpdatingThroughPhysicsObjets();
+
+
+
 		player->Update();
 		camera->Update();
-
-
 
 
 
@@ -107,12 +130,20 @@ int main(int argc, char *argv[])
 
 	// Create a "camera"
 	camera->Update();
+
+
+
+
+
+
+
+
+	
 	/*
 	glm::mat4 model(1.0f);
 	model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0, 1, 0));
 	shaderProgram->setUniform("in_View", glm::inverse(model));
 	*/
-
 	/*
 
 	// Create a "camera"
@@ -137,9 +168,7 @@ int main(int argc, char *argv[])
 	shaderProgram->draw(shape);
 
 	*/
-
-
-    /*
+  /*
 	//Shader things
 	shaderProgram->SetUniform("in_Projection", glm::perspective(glm::radians(45.0f), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 100.0f));
 
@@ -164,8 +193,15 @@ int main(int argc, char *argv[])
 	SDL_GL_SwapWindow(window);
   }
 
+
   delete objectManager;
 	delete camera;
+	delete physicsManager;
+	delete camera;
+	delete player;
+	delete playerModel;
+
+
   SDL_DestroyWindow(window);
   SDL_Quit();
 
