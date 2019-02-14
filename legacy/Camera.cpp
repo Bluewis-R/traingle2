@@ -3,8 +3,6 @@
 #include "ShaderProgram.h"
 #include "DeltaTime.h"
 
-
-
 Camera::Camera(ShaderProgram* _shader, DeltaTime* _deltaTime)
 {
 	m_shader = _shader;

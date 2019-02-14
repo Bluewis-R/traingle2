@@ -66,7 +66,7 @@ void PhysicsManager::UpdatingThroughPhysicsObjets()
 				{
 					int k = i;
 					i = j;
-					j = i;
+					j = k;
 				}
 
 				// is it the sphere
@@ -170,7 +170,7 @@ float Util::DistanceToPlane(const glm::vec3& p, const glm::vec3& q, const glm::v
 	//	cp is contact point
 bool Util::STS(const glm::vec3& c0, const glm::vec3& c1, float r1, float r2, glm::vec3& cp)
 {
-	float d = glm::length(c0 - c1);
+	float d = glm::length(-c0 - c1);
 	glm::vec3 n;
 	if (d <= (r1 + r2))
 	{

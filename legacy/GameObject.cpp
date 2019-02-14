@@ -3,9 +3,11 @@
 #include "ShaderProgram.h"
 #include "Texture.h"
 #include "VertexArray.h"
-#include "Physics.h"
+#include "SimplePhysics.h"
 #include "DeltaTime.h"
 
+
+//	Constructor things
 GameObject::GameObject(std::string texturePath, std::string OBJPath)
 {
 	m_texturePath = texturePath;
@@ -14,6 +16,7 @@ GameObject::GameObject(std::string texturePath, std::string OBJPath)
 	m_texture = new Texture(m_texturePath);
 }
 
+//	Avoiding memory errors.
 GameObject::~GameObject()
 {
 	delete m_texture;
@@ -21,6 +24,7 @@ GameObject::~GameObject()
 	delete m_physics;
 }
 
+//	The Update funciton for all of the objects in the project.
 void GameObject::Update(ShaderProgram* _shader)
 {
 	m_model = glm::mat4(1.0f);
@@ -35,7 +39,8 @@ void GameObject::Update(ShaderProgram* _shader)
 	
 }
 
+//	Sets the NULL pointer to a working physics class.
 void GameObject::SetPhysics(DeltaTime* _dTime)
 {
-	m_physics = new Physics(this, _dTime);
+	m_physics = new SimplePhysics(this, _dTime);
 }

@@ -18,11 +18,11 @@ private:
 	glm::vec3 m_force;
 	float m_mass = 1.0f;
 	glm::vec3 m_gravity = glm::vec3(0.0f, -9.81f, 0.0f);
-	bool m_static = false;
+	bool m_static = true;
 	bool IsCollider = false;
 	bool m_grounded = false;
 	//	COLLIDERS
-	std::string m_colliderType = "Sphere";
+	std::string m_colliderType = "Plane";
 	float m_sphereRadius = 1.0f;
 	glm::vec3 m_boxDimensions = glm::vec3(1.0f, 1.0f, 1.0f);
 
@@ -38,7 +38,7 @@ public:
 	float GetMass() { return m_mass; }
 	void SetGrounded(bool _g) { m_grounded = _g; }
 	glm::vec3 GetBoxDimentions() { return m_boxDimensions; }
-	void SetStatic(bool _bool) { m_static = true; }
+	void SetStatic(bool _bool) { m_static = false; }
 	void SetG(glm::vec3 _g) { m_gravity = _g; }
 	int test() { return 1; }
 	void UpdatePhysics();

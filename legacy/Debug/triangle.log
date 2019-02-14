@@ -1,6 +1,38 @@
-﻿  main.cpp
+﻿  Camera.cpp
 d:\university\traingle2\legacy\deltatime.h(19): warning C4244: '=': conversion from 'float' to 'unsigned long', possible loss of data
-d:\university\traingle2\legacy\physics.h(6): warning C4305: 'initializing': truncation from 'double' to 'float'
+  DeltaTime.cpp
+d:\university\traingle2\legacy\deltatime.h(19): warning C4244: '=': conversion from 'float' to 'unsigned long', possible loss of data
+d:\university\traingle2\legacy\deltatime.cpp(9): warning C4244: '=': conversion from '__int64' to 'unsigned long', possible loss of data
+d:\university\traingle2\legacy\deltatime.cpp(14): warning C4244: '=': conversion from '__int64' to 'unsigned long', possible loss of data
+  GameObject.cpp
+d:\university\traingle2\legacy\deltatime.h(19): warning C4244: '=': conversion from 'float' to 'unsigned long', possible loss of data
+  ObjectManager.cpp
+d:\university\traingle2\legacy\deltatime.h(19): warning C4244: '=': conversion from 'float' to 'unsigned long', possible loss of data
+d:\university\traingle2\legacy\objectmanager.cpp(9): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+d:\university\traingle2\legacy\objectmanager.cpp(30): warning C4018: '<': signed/unsigned mismatch
+d:\university\traingle2\legacy\objectmanager.cpp(47): warning C4018: '<': signed/unsigned mismatch
+d:\university\traingle2\legacy\objectmanager.cpp(59): warning C4018: '<': signed/unsigned mismatch
+d:\university\traingle2\legacy\objectmanager.cpp(83): warning C4018: '<': signed/unsigned mismatch
+d:\university\traingle2\legacy\objectmanager.cpp(95): warning C4018: '<': signed/unsigned mismatch
+d:\university\traingle2\legacy\objectmanager.cpp(113): warning C4018: '<': signed/unsigned mismatch
+  main.cpp
+d:\university\traingle2\legacy\deltatime.h(19): warning C4244: '=': conversion from 'float' to 'unsigned long', possible loss of data
+  Player.cpp
+d:\university\traingle2\legacy\deltatime.h(19): warning C4244: '=': conversion from 'float' to 'unsigned long', possible loss of data
+  ShaderProgram.cpp
+  DeltaTime.h
+d:\university\traingle2\legacy\deltatime.h(19): warning C4244: '=': conversion from 'float' to 'unsigned long', possible loss of data
+  SimplePhysics.cpp
+d:\university\traingle2\legacy\deltatime.h(19): warning C4244: '=': conversion from 'float' to 'unsigned long', possible loss of data
+  stb_image.cpp
+  Texture.cpp
+d:\university\traingle2\legacy\texture.cpp(19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\university\traingle2\legacy\texture.cpp(20): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  VertexArray.cpp
+  VertexBuffer.cpp
+  Generating Code...
+d:\university\traingle2\legacy\objectmanager.cpp(54): warning C4715: 'ObjectManager::Edit': not all control paths return a value
+d:\university\traingle2\legacy\objectmanager.cpp(102): warning C4715: 'ObjectManager::GetGroup': not all control paths return a value
 Debug\DeltaTime.obj : warning LNK4042: object specified more than once; extras ignored
   triangle.vcxproj -> D:\UNIVERSITY\traingle2\legacy\Debug\triangle.exe
   ..\contrib\msvc-windows-x86\SDL2\bin\SDL2.dll

@@ -5,25 +5,24 @@ d:\university\traingle2\legacy\deltatime.h(19): warning C4244: '=': conversion f
 d:\university\traingle2\legacy\deltatime.cpp(9): warning C4244: '=': conversion from '__int64' to 'unsigned long', possible loss of data
 d:\university\traingle2\legacy\deltatime.cpp(14): warning C4244: '=': conversion from '__int64' to 'unsigned long', possible loss of data
   GameObject.cpp
-d:\university\traingle2\legacy\physics.h(6): warning C4305: 'initializing': truncation from 'double' to 'float'
 d:\university\traingle2\legacy\deltatime.h(19): warning C4244: '=': conversion from 'float' to 'unsigned long', possible loss of data
   ObjectManager.cpp
-d:\university\traingle2\legacy\objectmanager.cpp(26): warning C4018: '<': signed/unsigned mismatch
-d:\university\traingle2\legacy\objectmanager.cpp(46): warning C4018: '<': signed/unsigned mismatch
+d:\university\traingle2\legacy\deltatime.h(19): warning C4244: '=': conversion from 'float' to 'unsigned long', possible loss of data
+d:\university\traingle2\legacy\objectmanager.cpp(9): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+d:\university\traingle2\legacy\objectmanager.cpp(30): warning C4018: '<': signed/unsigned mismatch
+d:\university\traingle2\legacy\objectmanager.cpp(47): warning C4018: '<': signed/unsigned mismatch
+d:\university\traingle2\legacy\objectmanager.cpp(59): warning C4018: '<': signed/unsigned mismatch
+d:\university\traingle2\legacy\objectmanager.cpp(83): warning C4018: '<': signed/unsigned mismatch
+d:\university\traingle2\legacy\objectmanager.cpp(95): warning C4018: '<': signed/unsigned mismatch
+d:\university\traingle2\legacy\objectmanager.cpp(113): warning C4018: '<': signed/unsigned mismatch
   main.cpp
 d:\university\traingle2\legacy\deltatime.h(19): warning C4244: '=': conversion from 'float' to 'unsigned long', possible loss of data
-d:\university\traingle2\legacy\physics.h(6): warning C4305: 'initializing': truncation from 'double' to 'float'
-  Physics.cpp
-d:\university\traingle2\legacy\physics.h(6): warning C4305: 'initializing': truncation from 'double' to 'float'
-d:\university\traingle2\legacy\deltatime.h(19): warning C4244: '=': conversion from 'float' to 'unsigned long', possible loss of data
-  PhysicsManager.cpp
-d:\university\traingle2\legacy\physics.h(6): warning C4305: 'initializing': truncation from 'double' to 'float'
-d:\university\traingle2\legacy\physicsmanager.cpp(35): warning C4018: '<': signed/unsigned mismatch
-d:\university\traingle2\legacy\physicsmanager.cpp(40): warning C4018: '<': signed/unsigned mismatch
   Player.cpp
 d:\university\traingle2\legacy\deltatime.h(19): warning C4244: '=': conversion from 'float' to 'unsigned long', possible loss of data
   ShaderProgram.cpp
   DeltaTime.h
+d:\university\traingle2\legacy\deltatime.h(19): warning C4244: '=': conversion from 'float' to 'unsigned long', possible loss of data
+  SimplePhysics.cpp
 d:\university\traingle2\legacy\deltatime.h(19): warning C4244: '=': conversion from 'float' to 'unsigned long', possible loss of data
   stb_image.cpp
   Texture.cpp
@@ -33,8 +32,9 @@ d:\university\traingle2\legacy\texture.cpp(20): warning C4244: '=': conversion f
   VertexBuffer.cpp
 Release\DeltaTime.obj : warning LNK4042: object specified more than once; extras ignored
   Generating code
-d:\university\traingle2\legacy\objectmanager.cpp(53): warning C4715: 'ObjectManager::Edit': not all control paths return a value
-  All 947 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+d:\university\traingle2\legacy\objectmanager.cpp(102): warning C4715: 'ObjectManager::GetGroup': not all control paths return a value
+d:\university\traingle2\legacy\objectmanager.cpp(54): warning C4715: 'ObjectManager::Edit': not all control paths return a value
+  All 1171 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
   triangle.vcxproj -> D:\UNIVERSITY\traingle2\legacy\Release\triangle.exe
   ..\contrib\msvc-windows-x86\SDL2\bin\SDL2.dll

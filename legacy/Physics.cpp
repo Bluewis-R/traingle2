@@ -20,6 +20,7 @@ void Physics::UpdatePhysics()
 			m_force += m_gravity;
 		}
 		Euler();
+		std::cout << "Force" << m_force.y << std::endl;
 	}
 }
 
@@ -62,5 +63,5 @@ void Physics::CollisionUpdateSTS(GameObject* _gameObject, GameObject* _gameObjec
 //	of the force of a sphere reacting agaist a plane
 void Physics::CollisionUpdateSTP(GameObject* _gameObject, GameObject* _plane)
 {
-	_gameObject->GetPhysics()->SetForce(glm::vec3(1.0f,-0.9f, 1.0f)*_gameObject->GetPhysics()->GetForce());
+	_gameObject->GetPhysics()->SetForce(glm::vec3(1.0f,-1.0f, 1.0f)*_gameObject->GetPhysics()->GetForce());
 }

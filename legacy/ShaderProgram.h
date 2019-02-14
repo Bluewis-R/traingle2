@@ -38,7 +38,9 @@ public:
 	void setUniform(std::string uniform, glm::mat4);
 	void setUniform(std::string uniform, int);
 	void setUniform(std::string uniform, Texture *texture);
-	
+	void PrintShaderInfoLog(GLuint obj);
+
+
 	GLuint getId();
 
 };
